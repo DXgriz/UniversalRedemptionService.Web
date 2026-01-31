@@ -1,12 +1,18 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.css'],
+ // imports: [RouterOutlet]
 })
 export class AppComponent {
   title = 'universal-redemption-frontend';
+
+  constructor(private router: Router) {}
+
+  navigateTo(path: string) {
+    this.router.navigate([path]); 
+  }
 }

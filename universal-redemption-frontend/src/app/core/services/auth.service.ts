@@ -6,7 +6,7 @@ import { TokenService } from './token.service';
 @Injectable({ providedIn: 'root' })
 export class AuthService {
 
-  private baseUrl = 'https://localhost:5001/api/auth'; // adjust if needed
+  private baseUrl = 'https://localhost:5001/api/auth'; 
 
   constructor(
     private http: HttpClient,
@@ -25,5 +25,9 @@ export class AuthService {
 
   logout() {
     this.tokenService.clear();
+  }
+
+  isLoggedIn(): boolean {
+    return !!this.tokenService.getToken();
   }
 }
