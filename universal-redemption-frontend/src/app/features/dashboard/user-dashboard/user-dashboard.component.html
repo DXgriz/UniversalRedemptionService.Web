@@ -1,0 +1,41 @@
+<div class="dashboard">
+
+  <h2>My Wallet</h2>
+
+  <div class="wallet-card">
+    <p class="label">Balance</p>
+    <h1>R {{ balance | number:'1.2-2' }}</h1>
+  </div>
+
+  <h3>Recent Transactions</h3>
+
+  <table *ngIf="transactions.length">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Reference</th>
+        <th>Type</th>
+        <th>Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let t of transactions">
+        <td>{{ t.createdAt | date:'short' }}</td>
+        <td>{{ t.reference }}</td>
+        <td>{{ t.type }}</td>
+        <td [class.credit]="t.isCredit" [class.debit]="!t.isCredit">
+          {{ t.isCredit ? '+' : '-' }}R{{ t.amount }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="!transactions.length && !loading">No transactions found.</p>
+
+  <div class="pagination">
+    <button (click)="prevPage()" [disabled]="page === 1">Prev</button>
+    <span>Page {{ page }}</span>
+    <button (click)="nextPage()" [disabled]="page * pageSize >= total">Next</button>
+  </div>
+
+</div>

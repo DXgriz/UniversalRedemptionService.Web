@@ -1,0 +1,42 @@
+.dashboard {
+  max-width: 900px;
+  margin: auto;
+}
+
+.wallet-card {
+  background: #1e293b;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.label {
+  opacity: 0.8;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.credit {
+  color: green;
+  font-weight: bold;
+}
+
+.debit {
+  color: red;
+  font-weight: bold;
+}
+
+.pagination {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
