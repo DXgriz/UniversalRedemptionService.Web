@@ -1,58 +1,50 @@
+<!-- Landing Section -->
+<div class="landing-container">
 
-<div class="landing-page" style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh; font-family: Arial, sans-serif; background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); color: #fff;">
-
-  <!-- App Logo / Name--> 
-  <h1 style="font-size: 3rem; margin-bottom: 1rem;">Universal Cash Send Redemption</h1>
-  
-  <!-- Tagline -->
-  <p style="font-size: 1.2rem; margin-bottom: 2rem; max-width: 400px; text-align: center;">
-    Deposit sent funds directly into your bank account safely and instantly.
-  </p>
-  
-  <!-- Buttons -->
-  <div style="display: flex; gap: 1rem;">
-    <button 
-      style="padding: 0.8rem 2rem; font-size: 1rem; color: #0f2027; background-color: #fff; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;"
-      (click)="navigateTo('login')">
-      Login
-    </button>
-
-    <button 
-      style="padding: 0.8rem 2rem; font-size: 1rem; color: #fff; background-color: transparent; border: 2px solid #fff; border-radius: 5px; cursor: pointer; font-weight: bold;"
-      (click)="navigateTo('register')">
-      Register
-    </button>
+<!-- Floating Background Elements -->
+  <div class="floating-elements">
+    <img src="assets/coin1.png" class="coin coin1" alt="coin">
+    <img src="assets/coin2.png" class="coin coin2" alt="coin">
+    <img src="assets/coin3.png" class="coin coin3" alt="coin">
+    <img src="assets/dollar.png" class="coin coin4" alt="coin">
+    <img src="assets/financial-profit.png" class="coin coin5" alt="coin">
   </div>
 
-</div>
 
+  <!-- Text / Buttons -->
+  <div class="landing-text">
+    <h1>Universal Redemption</h1>
+    <p>Deposit sent funds directly into your bank account safely and instantly.</p>
+    <div class="landing-buttons">
+      <button class="btn-login" (click)="navigateTo('login')">Login</button>
+      <button class="btn-register" (click)="navigateTo('register')">Register</button>
+    </div>
+  </div>
 
-
-<!-- Landing Page 
-<div class="flex flex-col justify-center items-center h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-white px-4">
-
-  <!-- Logo / App Name 
-  <h1 class="text-5xl font-bold mb-4">Universal Redemption</h1>
-
-  <!-- Tagline 
-  <p class="text-lg text-center mb-8 max-w-md">
-    Deposit sent funds directly into your bank account safely and instantly.
-  </p>
-
-  <!-- Buttons --
-  <div class="flex flex-col sm:flex-row gap-4">
-    <button
-      (click)="navigateTo('login')"
-      class="bg-white text-blue-900 font-bold py-3 px-8 rounded-lg hover:bg-gray-200 transition">
-      Login
-    </button>
-
-    <button
-      (click)="navigateTo('register')"
-      class="border-2 border-white text-white font-bold py-3 px-8 rounded-lg hover:bg-white hover:text-blue-900 transition">
-      Register
-    </button>
+  <!-- Hero Illustration -->
+  <div class="landing-hero">
+    <img src="assets/online-transactions.svg" alt="Financial Illustration">
   </div>
 </div>
-<router-outlet></router-outlet>
--->
+
+<!-- Features Section -->
+<div class="features-section">
+  <h2>Why Choose Universal Redemption?</h2>
+  <div class="features-cards">
+    <div class="feature-card">
+      <img src="assets/mobile-pay.svg" alt="Secure Transactions">
+      <h3>Secure Transactions</h3>
+      <p>Your funds are protected with top-tier security measures.</p>
+    </div>
+    <div class="feature-card">
+      <img src="assets/transfer-money.svg" alt="Instant Deposits">
+      <h3>Instant Deposits</h3>
+      <p>Receive your funds in your bank account instantly.</p>
+    </div>
+    <div class="feature-card">
+      <img src="assets/send-money.svg" alt="24/7 Support">
+      <h3>24/7 Support</h3>
+      <p>Our support team is available around the clock to assist you.</p>
+    </div>
+  </div>
+</div>
