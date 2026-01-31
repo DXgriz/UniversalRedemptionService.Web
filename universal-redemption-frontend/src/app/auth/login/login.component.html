@@ -1,25 +1,35 @@
-<h2>Login</h2>
+<div class="page-wrapper">
+  <div class="main-content landing-container">
+<div class="landing-container">
+  <div class="auth-wrapper">
+    <div class="landing-text">
+      <h1>{{ title }}</h1>
+      <p>{{ subtitle }}</p>
 
-<form [formGroup]="form" (ngSubmit)="submit()">
+      <form [formGroup]="form" (ngSubmit)="submit()" class="landing-form">
+        <input type="email" formControlName="email" placeholder="Email" class="form-input" />
+        <input type="password" formControlName="password" placeholder="Password" class="form-input" />
 
-  <input
-    type="email"
-    placeholder="Email"
-    formControlName="email"
-  />
+        <button type="submit" class="btn-login" [disabled]="loading">{{ buttonText }}</button>
+      </form>
 
-  <input
-    type="password"
-    placeholder="Password"
-    formControlName="password"
-  />
+      <p class="switch-auth">
+        {{ switchText }}
+        <a [routerLink]="switchLink">{{ switchLinkText }}</a>
+      </p>
 
-  <button type="submit" [disabled]="loading">
-    {{ loading ? 'Logging in...' : 'Login' }}
-  </button>
+      <p *ngIf="error" style="color: #ff6b6b;">{{ error }}</p>
+    </div>
 
-  <p *ngIf="error" style="color:red">
-    {{ error }}
-  </p>
 
-</form>
+  <div class="floating-elements">
+    <img src="assets/coin1.png" class="coin-left" />
+    <img src="assets/coin2.png" class="coin-left" />
+    <img src="assets/coin3.png" class="coin-right" />
+    <img src="assets/dollar.png" class="coin-right" />
+  </div>
+</div>
+</div>
+
+<app-footer></app-footer>
+</div>

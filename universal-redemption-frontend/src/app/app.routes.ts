@@ -4,9 +4,10 @@ import { authGuard } from './core/guards/auth.guard';
 export const routes: Routes = [
   {
     path: '',
+    pathMatch: 'full',
     loadComponent: () =>
-      import('./app.component')
-        .then(m => m.AppComponent)
+      import('./features/landing/landing.component')
+        .then(m => m.LandingComponent)
   },
   {
     path: 'login',
@@ -26,5 +27,10 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./features/dashboard/user-dashboard/user-dashboard.component')
         .then(m => m.UserDashboardComponent)
+  },
+  {
+    path: '**',
+    redirectTo: '',
+    pathMatch: 'full'
   }
 ];

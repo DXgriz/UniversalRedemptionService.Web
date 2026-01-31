@@ -1,0 +1,290 @@
+/* --- Landing Section --- */
+.landing-container {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: white;
+  text-align: center;
+  overflow: hidden;
+}
+
+.landing-text h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  animation: fadeInUp 1s ease forwards;
+}
+
+.landing-text p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  max-width: 400px;
+  line-height: 1.5;
+  animation: fadeInUp 1s ease 0.3s forwards;
+}
+
+.landing-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.btn-login, .btn-register {
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Buttons Hover Animation */
+.btn-login {
+  background-color: white;
+  color: #0f2027;
+}
+
+.btn-login:hover {
+  background-color: #e0e0e0;
+  transform: scale(1.05);
+}
+
+.btn-register {
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.btn-register:hover {
+  background-color: white;
+  color: #0f2027;
+  transform: scale(1.05);
+}
+
+/* Hero Illustration */
+.landing-hero img {
+  width: 250px;
+  max-width: 80%;
+  margin-bottom: 2rem;
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Desktop layout */
+@media (min-width: 768px) {
+  .landing-container {
+    flex-direction: row;
+    text-align: left;
+    justify-content: space-between;
+    padding: 4rem 6rem;
+  }
+
+  .landing-text {
+    max-width: 50%;
+  }
+
+  .landing-hero img {
+    width: 400px;
+    margin-bottom: 0;
+  }
+
+  .landing-buttons {
+    flex-direction: row;
+  }
+}
+
+/* --- Features Section --- */
+.features-section {
+  background-color: #0f2027;
+  padding: 4rem 2rem;
+  text-align: center;
+  color: white;
+}
+
+.features-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  font-weight: bold;
+}
+
+.features-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  animation: fadeInUp 1s ease forwards;
+}
+
+.feature-card {
+  background-color: #203a43;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 300px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.feature-card img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 1.5rem;
+}
+
+.feature-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.feature-card p {
+  font-size: 1rem;
+  color: #d1d1d1;
+  line-height: 1.5;
+}
+
+@media (min-width: 768px) {
+  .features-cards {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+/* --- Animations --- */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* --- Floating Background Elements --- */
+.floating-elements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* allows clicking buttons */
+  overflow: hidden;
+  z-index: 0;
+}
+
+.floating-elements .coin {
+  position: absolute;
+  width: 40px;
+  opacity: 0.6;
+  animation-name: floatCoin;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+/* Individual coins with different speed & delay */
+.coin1 {
+  left: 10%;
+  top: 90%;
+  animation-duration: 15s;
+  animation-delay: 0s;
+}
+.coin2 {
+  left: 30%;
+  top: 100%;
+  animation-duration: 18s;
+  animation-delay: 3s;
+}
+.coin3 {
+  left: 50%;
+  top: 95%;
+  animation-duration: 20s;
+  animation-delay: 1s;
+}
+.coin4 {
+  left: 70%;
+  top: 100%;
+  animation-duration: 17s;
+  animation-delay: 2s;
+}
+.coin5 {
+  left: 85%;
+  top: 90%;
+  animation-duration: 22s;
+  animation-delay: 4s;
+}
+
+/* Floating animation: moves coin up and rotates */
+@keyframes floatCoin {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-150px) rotate(180deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-300px) rotate(360deg);
+    opacity: 0.6;
+  }
+}
+
+
+/* --- Footer Styles --- */
+.app-footer {
+  background-color: #0f2027; /* Dark footer matching theme */
+  color: #d1d1d1;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-container p {
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.footer-links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #00bfa5; /* subtle accent color on hover */
+}
+
+/* Responsive for mobile */
+@media (max-width: 480px) {
+  .footer-links {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+}

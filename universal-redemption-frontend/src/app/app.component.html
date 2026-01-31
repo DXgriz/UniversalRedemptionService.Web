@@ -1,50 +1,16 @@
-<!-- Landing Section -->
-<div class="landing-container">
 
-<!-- Floating Background Elements -->
-  <div class="floating-elements">
-    <img src="assets/coin1.png" class="coin coin1" alt="coin">
-    <img src="assets/coin2.png" class="coin coin2" alt="coin">
-    <img src="assets/coin3.png" class="coin coin3" alt="coin">
-    <img src="assets/dollar.png" class="coin coin4" alt="coin">
-    <img src="assets/financial-profit.png" class="coin coin5" alt="coin">
-  </div>
+<header>
+  <nav>
+    <a routerLink="/">Home</a>
+    <a routerLink="/login">Login</a>
+    <a routerLink="/register">Register</a>
+    <a routerLink="/dashboard">Dashboard</a>
+  </nav>
+</header>
 
+<main>
+  <router-outlet></router-outlet>
+</main>
 
-  <!-- Text / Buttons -->
-  <div class="landing-text">
-    <h1>Universal Redemption</h1>
-    <p>Deposit sent funds directly into your bank account safely and instantly.</p>
-    <div class="landing-buttons">
-      <button class="btn-login" (click)="navigateTo('login')">Login</button>
-      <button class="btn-register" (click)="navigateTo('register')">Register</button>
-    </div>
-  </div>
+<app-footer></app-footer>
 
-  <!-- Hero Illustration -->
-  <div class="landing-hero">
-    <img src="assets/online-transactions.svg" alt="Financial Illustration">
-  </div>
-</div>
-
-<!-- Features Section -->
-<div class="features-section">
-  <h2>Why Choose Universal Redemption?</h2>
-  <div class="features-cards">
-    <div class="feature-card">
-      <img src="assets/mobile-pay.svg" alt="Secure Transactions">
-      <h3>Secure Transactions</h3>
-      <p>Your funds are protected with top-tier security measures.</p>
-    </div>
-    <div class="feature-card">
-      <img src="assets/transfer-money.svg" alt="Instant Deposits">
-      <h3>Instant Deposits</h3>
-      <p>Receive your funds in your bank account instantly.</p>
-    </div>
-    <div class="feature-card">
-      <img src="assets/send-money.svg" alt="24/7 Support">
-      <h3>24/7 Support</h3>
-      <p>Our support team is available around the clock to assist you.</p>
-    </div>
-  </div>
-</div>

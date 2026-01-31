@@ -1,0 +1,186 @@
+
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.landing-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 2rem;
+  min-height: 100%;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: white;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.auth-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.landing-text h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  animation: fadeInUp 1s ease forwards;
+}
+
+.landing-text p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  max-width: 400px;
+  line-height: 1.5;
+  animation: fadeInUp 1s ease 0.3s forwards;
+}
+
+.landing-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  max-width: 350px;
+  width: 100%;
+}
+
+.form-input {
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+}
+
+.form-input:focus {
+  outline: 2px solid #00bfa5;
+}
+
+.btn-login {
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: white;
+  color: #0f2027;
+  border: none;
+}
+
+.btn-login:hover {
+  background-color: #080419;
+  transform: scale(1.05);
+    color: white;
+}
+
+
+.switch-auth {
+  font-size: 0.9rem;
+  color: #ffffff;
+}
+
+.switch-auth a {
+  color: #00bfa5;
+  text-decoration: none;
+  margin-left: 0.3rem;
+}
+
+.switch-auth a:hover {
+  text-decoration: underline;
+}
+
+.landing-hero img {
+  width: 250px;
+  max-width: 80%;
+  margin-top: 2rem;
+  animation: float 4s ease-in-out infinite;
+}
+
+.floating-elements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+
+.coin-left, .coin-right {
+  position: absolute;
+  width: 40px;
+  opacity: 0.6;
+  animation-name: floatSideCoin;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.coin-left {
+  left: 5%; 
+}
+
+
+.coin-right {
+  right: 5%; 
+}
+
+.coin-left:nth-child(1) { top: 10%; animation-duration: 15s; animation-delay: 0s; }
+.coin-left:nth-child(2) { top: 50%; animation-duration: 18s; animation-delay: 3s; }
+.coin-right:nth-child(1) { top: 30%; animation-duration: 20s; animation-delay: 1s; }
+.coin-right:nth-child(2) { top: 70%; animation-duration: 17s; animation-delay: 2s; }
+
+@keyframes floatSideCoin {
+  0% { transform: translateY(0px) rotate(0deg); opacity: 0.6; }
+  50% { transform: translateY(-100px) rotate(180deg); opacity: 0.8; }
+  100% { transform: translateY(0px) rotate(360deg); opacity: 0.6; }
+}
+
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes floatCoin {
+  0% { transform: translateY(0px) rotate(0deg); opacity: 0.6; }
+  50% { transform: translateY(-150px) rotate(180deg); opacity: 0.8; }
+  100% { transform: translateY(-300px) rotate(360deg); opacity: 0.6; }
+}
+
+@media (min-width: 768px) {
+  .landing-container {
+    padding: 4rem 6rem;
+  }
+  
+  .landing-form {
+    max-width: 350px;
+  }
+
+  .landing-hero img {
+    width: 400px;
+    margin-top: 0;
+  }
+}
