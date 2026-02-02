@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({ providedIn: 'root' })
 export class WalletService {
 
-  private baseUrl = 'https://localhost:5001/api/wallet';
+  private baseUrl = 'https://localhost:7052/api/wallet';
 
   constructor(private http: HttpClient) {}
 

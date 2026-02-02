@@ -1,37 +1,40 @@
 <div class="page-wrapper">
   <div class="main-content landing-container">
+    <div class="auth-wrapper">
+      <div class="landing-text">
+        <h1>{{ title }}</h1>
+        <p>{{ subtitle }}</p>
 
-<div class="landing-container">
-  <div class="auth-wrapper">
-    <div class="landing-text">
-      <h1>{{ title }}</h1>
-      <p>{{ subtitle }}</p>
+        <form [formGroup]="form" (ngSubmit)="submit()" class="landing-form">
+          <input type="text" formControlName="fullName" placeholder="Full Name" class="form-input" />
+          <input type="email" formControlName="email" placeholder="Email" class="form-input" />
+          <input type="text" formControlName="phoneNumber" placeholder="Phone Number" class="form-input" />
+          <input type="password" formControlName="password" placeholder="Password" class="form-input" />
+          <input type="password" formControlName="confirmPassword" placeholder="Confirm Password" class="form-input" />
 
-      <form [formGroup]="form" (ngSubmit)="submit()" class="landing-form">
-        <input type="email" formControlName="email" placeholder="Email" class="form-input" />
-        <input type="password" formControlName="password" placeholder="Password" class="form-input" />
-        <input type="password" formControlName="confirmPassword" placeholder="Confirm Password" class="form-input" />
+          <button type="submit" class="btn-login" [disabled]="loading">
+            {{ buttonText }}
+          </button>
+        </form>
 
-        <button type="submit" class="btn-login" [disabled]="loading">{{ buttonText }}</button>
-      </form>
 
-      <p class="switch-auth">
-        {{ switchText }}
-        <a [routerLink]="switchLink">{{ switchLinkText }}</a>
-      </p>
 
-      <p *ngIf="error" style="color: #ff6b6b;">{{ error }}</p>
+        <p class="switch-auth">
+          {{ switchText }}
+          <a [routerLink]="switchLink">{{ switchLinkText }}</a>
+        </p>
+
+        <p *ngIf="error" style="color: #ff6b6b;">{{ error }}</p>
+      </div>
     </div>
+  </div>
 
-  
   <div class="floating-elements">
     <img src="assets/coin1.png" class="coin-left" />
     <img src="assets/coin2.png" class="coin-left" />
     <img src="assets/coin3.png" class="coin-right" />
     <img src="assets/dollar.png" class="coin-right" />
   </div>
-</div>
-</div>
 
-<app-footer></app-footer>
+  <app-footer></app-footer>
 </div>

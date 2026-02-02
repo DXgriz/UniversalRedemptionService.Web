@@ -1,41 +1,83 @@
-<div class="dashboard">
+<div class="dashboard-layout">
 
-  <h2>My Wallet</h2>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="user-card">
+      <div class="avatar">{{ userInitials }}</div>
+      <div class="user-info">
+        <h4>{{ userName }}</h4>
+        <p>{{ userEmail }}</p>
+      </div>
+    </div>
 
-  <div class="wallet-card">
-    <p class="label">Balance</p>
-    <h1>R {{ balance | number:'1.2-2' }}</h1>
-  </div>
+    <nav class="menu">
+      <a class="active">Dashboard</a>
+      <a>Redeem Cash</a>
+      <a>Send Money</a>
+      <a (click)="logout()" class="logout">Logout</a>
+    </nav>
+  </aside>
 
-  <h3>Recent Transactions</h3>
+  <!-- Main Content -->
+  <main class="content">
 
-  <table *ngIf="transactions.length">
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Reference</th>
-        <th>Type</th>
-        <th>Amount</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let t of transactions">
-        <td>{{ t.createdAt | date:'short' }}</td>
-        <td>{{ t.reference }}</td>
-        <td>{{ t.type }}</td>
-        <td [class.credit]="t.isCredit" [class.debit]="!t.isCredit">
-          {{ t.isCredit ? '+' : '-' }}R{{ t.amount }}
-        </td>
-      </tr>
-    </tbody>
-  </table>
+    <header class="page-header">
+      <h2>Dashboard</h2>
+      <span class="sub">Overview of your wallet activity</span>
+    </header>
 
-  <p *ngIf="!transactions.length && !loading">No transactions found.</p>
+    <!-- Wallet Card -->
+    <section class="wallet-section">
+      <div class="wallet-card">
+        <p class="label">Wallet Balance</p>
+        <h1>R {{ balance | number:'1.2-2' }}</h1>
+        <span class="hint">Available funds</span>
+      </div>
+    </section>
 
-  <div class="pagination">
-    <button (click)="prevPage()" [disabled]="page === 1">Prev</button>
-    <span>Page {{ page }}</span>
-    <button (click)="nextPage()" [disabled]="page * pageSize >= total">Next</button>
-  </div>
+    <!-- Transactions -->
+    <section class="transactions-section">
+      <h3>Recent Transactions</h3>
+
+      <div class="table-wrapper" *ngIf="transactions.length">
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Reference</th>
+              <th>Type</th>
+              <th>Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let t of transactions">
+              <td>{{ t.createdAt | date:'short' }}</td>
+              <td>{{ t.reference }}</td>
+              <td>{{ t.type }}</td>
+              <td
+                [class.credit]="t.isCredit"
+                [class.debit]="!t.isCredit">
+                {{ t.isCredit ? '+' : '-' }}R{{ t.amount }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p *ngIf="!transactions.length && !loading" class="empty">
+        No transactions yet
+      </p>
+
+      <!-- Pagination -->
+      <div class="pagination">
+        <button (click)="prevPage()" [disabled]="page === 1">Prev</button>
+        <span>Page {{ page }}</span>
+        <button (click)="nextPage()" [disabled]="page * pageSize >= total">Next</button>
+      </div>
+    </section>
+
+  </main>
 
 </div>
+
+<app-footer></app-footer>

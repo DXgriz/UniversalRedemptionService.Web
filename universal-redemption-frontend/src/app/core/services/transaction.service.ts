@@ -4,7 +4,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 @Injectable({ providedIn: 'root' })
 export class TransactionService {
 
-  private baseUrl = 'https://localhost:5001/api/transaction';
+  private baseUrl = 'https://localhost:7052/api/transaction';
 
   constructor(private http: HttpClient) {}
 

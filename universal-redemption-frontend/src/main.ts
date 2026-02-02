@@ -5,7 +5,7 @@ import { authInterceptor } from './app/core/interceptors/auth.interceptor';
 import { appConfig } from './app/app.config';
 import { provideRouter } from '@angular/router';
 import { routes } from './app/app.routes';
-
+/*
 bootstrapApplication(AppComponent, {
   ...appConfig,
   providers: [
@@ -14,3 +14,7 @@ bootstrapApplication(AppComponent, {
   ]
 })
 .catch((err) => console.error(err));
+*/
+
+bootstrapApplication(AppComponent, appConfig)
+  .catch(err => console.error(err));

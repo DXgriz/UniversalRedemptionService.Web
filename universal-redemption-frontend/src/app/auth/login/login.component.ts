@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, FormControl, Validators, ReactiveFormsModule } 
 import { RouterModule, Router } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
 import { FooterComponent } from "../../shared/components/footer/footer.component";
+import { LoginRequest } from '../../shared/models/auth.models';
 
 @Component({
   standalone: true,
@@ -40,19 +41,28 @@ export class LoginComponent {
   }
 
   submit(): void {
-    if (this.form.invalid) return;
+  if (this.form.invalid) return;
+  
+  const formValue = this.form.getRawValue();
 
-    this.loading = true;
-    this.error = '';
+  const payload: LoginRequest = {
+    email: formValue.email, 
+    password: formValue.password
+  };
 
-    const formValue = this.form.getRawValue();
+  this.loading = true;
+  this.error = '';
 
-    this.authService.login(formValue).subscribe({
-      next: () => this.router.navigate(['/dashboard']),
-      error: err => {
-        this.error = err.error?.message ?? 'Login failed';
-        this.loading = false;
-      }
-    });
-  }
+  this.authService.login(payload).subscribe({
+    next: (res) => {
+      localStorage.setItem('token', res.token);
+      this.router.navigate(['/dashboard']);
+    },
+    error: (err) => {
+      this.error = err.error?.message || 'Login failed. Please try again.';
+      this.loading = false;
+    }
+  });
+}
+
 }
