@@ -1,160 +1,6 @@
-.dashboard {
-  max-width: 900px;
-  margin: auto;
-}
-
-.wallet-card {
-  background: #1e293b;
-  color: white;
-  padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-}
-
-.label {
-  opacity: 0.8;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-th, td {
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-}
-
-.credit {
-  color: green;
-  font-weight: bold;
-}
-
-.debit {
-  color: red;
-  font-weight: bold;
-}
-
-.pagination {
-  margin-top: 10px;
-  display: flex;
-  justify-content: space-between;
-}
-
-
-.dashboard-layout {
-  display: flex;
-  min-height: 100vh;
-  background: #f4f6f8;
-}
-
-/* Sidebar */
-.sidebar {
-  width: 240px;
-  background: #0f2a44;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-}
-
-.user-profile {
-  display: flex;
-  align-items: center;
-  margin-bottom: 30px;
-}
-
-.avatar {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background: #ffd166;
-  color: #0f2a44;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 10px;
-}
-
-.user-info small {
-  opacity: 0.8;
-}
-
-.nav-links a {
-  display: block;
-  padding: 10px;
-  margin-bottom: 8px;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.logout-btn {
-  margin-top: auto;
-  background: #ff4d4d;
-  border: none;
-  color: white;
-  padding: 10px;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-/* Main */
-.dashboard-content {
-  flex: 1;
-  padding: 30px;
-}
-
-.wallet-card {
-  background: white;
-  padding: 20px;
-  border-radius: 12px;
-  width: 280px;
-  margin-bottom: 30px;
-}
-
-.wallet-card h1 {
-  margin: 0;
-  color: #0f2a44;
-}
-
-table {
-  width: 100%;
-  background: white;
-  border-radius: 8px;
-  border-collapse: collapse;
-}
-
-th, td {
-  padding: 12px;
-  text-align: left;
-}
-
-thead {
-  background: #f0f0f0;
-}
-
-.credit {
-  color: green;
-  font-weight: bold;
-}
-
-.debit {
-  color: red;
-  font-weight: bold;
-}
-
-.pagination {
-  margin-top: 15px;
-}
-
-
-/* Layout */
+/* ===============================
+   Global Dashboard Layout
+================================ */
 .dashboard-layout {
   display: flex;
   min-height: 100vh;
@@ -162,12 +8,16 @@ thead {
   font-family: 'Segoe UI', sans-serif;
 }
 
-/* Sidebar */
+/* ===============================
+   Sidebar
+================================ */
 .sidebar {
   width: 260px;
   background: linear-gradient(180deg, #1e3c72, #2a5298);
   color: white;
   padding: 24px;
+  display: flex;
+  flex-direction: column;
 }
 
 .user-card {
@@ -204,11 +54,13 @@ thead {
 }
 
 .menu .logout {
-  margin-top: 30px;
+  margin-top: auto;
   color: #ffcccc;
 }
 
-/* Content */
+/* ===============================
+   Main Content
+================================ */
 .content {
   flex: 1;
   padding: 32px;
@@ -222,29 +74,32 @@ thead {
   color: #777;
 }
 
-/* Wallet */
+/* ===============================
+   Wallet Card (Single Source)
+================================ */
 .wallet-card {
   background: white;
   padding: 24px;
   border-radius: 16px;
   margin: 24px 0;
   box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  max-width: 420px;
 }
 
-.wallet-card h1 {
-  margin: 10px 0;
+.wallet-card h1,
+.wallet-card h3 {
+  margin: 0;
   color: #2a5298;
 }
 
 .wallet-card .hint {
   color: #999;
+  font-size: 14px;
 }
 
-/* Transactions */
-.transactions-section h3 {
-  margin-bottom: 16px;
-}
-
+/* ===============================
+   Transactions Table
+================================ */
 .table-wrapper {
   background: white;
   border-radius: 12px;
@@ -256,13 +111,14 @@ table {
   border-collapse: collapse;
 }
 
-th, td {
-  padding: 14px;
-  text-align: left;
-}
-
 thead {
   background: #f0f2f5;
+}
+
+th,
+td {
+  padding: 14px;
+  text-align: left;
 }
 
 tbody tr:hover {
@@ -284,7 +140,9 @@ tbody tr:hover {
   margin-top: 20px;
 }
 
-/* Pagination */
+/* ===============================
+   Pagination
+================================ */
 .pagination {
   margin-top: 16px;
   display: flex;
@@ -303,4 +161,124 @@ tbody tr:hover {
 .pagination button:disabled {
   background: #ccc;
   cursor: not-allowed;
+}
+
+/* ===============================
+   Redeem Cash – Banking Style
+================================ */
+.redeem-section {
+  max-width: 420px;
+}
+
+.redeem-title {
+  margin-bottom: 6px;
+}
+
+.redeem-subtitle {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 24px;
+}
+
+/* Floating label group */
+.floating-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.floating-group input,
+.floating-group select {
+  width: 100%;
+  padding: 14px 12px;
+  border-radius: 10px;
+  border: 1.5px solid #d1d5db;
+  font-size: 15px;
+  background: transparent;
+  outline: none;
+  transition: all 0.2s ease;
+  appearance: none;
+}
+.floating-group select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23999'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7' /%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+}
+.floating-group input:focus + label,
+.floating-group input:not(:placeholder-shown) + label,
+.floating-group select:focus + label,
+.floating-group select:not([value=""]) + label {
+  top: -8px;
+  font-size: 12px;
+  color: #2a5298;
+}
+
+
+.floating-group input:focus,
+.floating-group select:focus {
+  border-color: #2a5298;
+  box-shadow: 0 0 0 3px rgba(42, 82, 152, 0.15);
+}
+
+
+.floating-group label {
+  position: absolute;
+  left: 12px;
+  top: 14px;
+  color: #888;
+  font-size: 14px;
+  pointer-events: none;
+  transition: 0.2s ease all;
+  background: white;
+  padding: 0 6px;
+}
+
+.floating-group input:focus + label,
+.floating-group input:not(:placeholder-shown) + label {
+  top: -8px;
+  font-size: 12px;
+  color: #2a5298;
+}
+
+/* Redeem Button */
+.redeem-btn {
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: #2a5298;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.redeem-btn:hover {
+  background: #1e3c72;
+}
+
+.redeem-btn:disabled {
+  background: #cbd5e1;
+  cursor: not-allowed;
+}
+
+/* Redeem Messages */
+.redeem-message {
+  margin-top: 16px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.redeem-message.success {
+  background: #e6f7ee;
+  color: #1aaa55;
+}
+
+.redeem-message.error {
+  background: #fdecea;
+  color: #e74c3c;
 }

@@ -1,0 +1,54 @@
+<div class="redeem-container">
+  <h2>Redeem Cash Send</h2>
+
+  <form (ngSubmit)="redeemCash()" #redeemForm="ngForm">
+    <!-- Provider -->
+    <div class="form-group">
+      <label for="provider">Provider</label>
+      <input
+        type="text"
+        id="provider"
+        name="provider"
+        [(ngModel)]="redeemDto.provider"
+        required
+        class="form-control"
+      />
+    </div>
+
+    <!-- Reference Number -->
+    <div class="form-group">
+      <label for="referenceNumber">Reference Number</label>
+      <input
+        type="text"
+        id="referenceNumber"
+        name="referenceNumber"
+        [(ngModel)]="redeemDto.referenceNumber"
+        required
+        class="form-control"
+      />
+    </div>
+
+    <!-- PIN -->
+    <div class="form-group">
+      <label for="pin">PIN</label>
+      <input
+        type="password"
+        id="pin"
+        name="pin"
+        [(ngModel)]="redeemDto.pin"
+        required
+        class="form-control"
+      />
+    </div>
+
+    <button type="submit" [disabled]="redeemForm.invalid || loading" class="btn btn-primary">
+      {{ loading ? "Redeeming..." : "Redeem" }}
+    </button>
+  </form>
+
+  <!-- Feedback messages -->
+  <div *ngIf="message" [ngClass]="{'text-success': success, 'text-danger': !success}" class="mt-3">
+    {{ message }}
+  </div>
+</div>
+<app-footer></app-footer>

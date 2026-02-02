@@ -11,9 +11,10 @@
     </div>
 
     <nav class="menu">
-      <a class="active">Dashboard</a>
-      <a>Redeem Cash</a>
+      <a [class.active]="currentSection==='dashboard'" (click)="setSection('dashboard')">Dashboard</a>
+      <a [class.active]="currentSection==='redeem'" (click)="setSection('redeem')">Redeem Cash</a>
       <a>Send Money</a>
+      <a>Transaction History</a>
       <a (click)="logout()" class="logout">Logout</a>
     </nav>
   </aside>
@@ -22,8 +23,9 @@
   <main class="content">
 
     <header class="page-header">
-      <h2>Dashboard</h2>
-      <span class="sub">Overview of your wallet activity</span>
+      <h2>{{ currentSection === 'dashboard' ? 'Dashboard' : 'Redeem Cash Send' }}</h2>
+      <span class="sub">{{ currentSection === 'dashboard' ? 'Overview of your wallet activity' : 'Enter Cash Send
+        details to redeem funds' }}</span>
     </header>
 
     <!-- Wallet Card -->
@@ -35,8 +37,8 @@
       </div>
     </section>
 
-    <!-- Transactions -->
-    <section class="transactions-section">
+    <!-- Dashboard Section -->
+    <section *ngIf="currentSection === 'dashboard'" class="transactions-section">
       <h3>Recent Transactions</h3>
 
       <div class="table-wrapper" *ngIf="transactions.length">
@@ -54,9 +56,7 @@
               <td>{{ t.createdAt | date:'short' }}</td>
               <td>{{ t.reference }}</td>
               <td>{{ t.type }}</td>
-              <td
-                [class.credit]="t.isCredit"
-                [class.debit]="!t.isCredit">
+              <td [class.credit]="t.isCredit" [class.debit]="!t.isCredit">
                 {{ t.isCredit ? '+' : '-' }}R{{ t.amount }}
               </td>
             </tr>
@@ -76,8 +76,58 @@
       </div>
     </section>
 
-  </main>
+    <!-- Redeem Cash Section -->
+    <section *ngIf="currentSection === 'redeem'" class="redeem-section">
 
+      <div class="wallet-card redeem-card">
+        <h3 class="redeem-title">Redeem Cash Send</h3>
+        <p class="redeem-subtitle">
+          Enter your Cash Send details to deposit funds into your wallet
+        </p>
+
+        <form (ngSubmit)="redeemCash()" #redeemForm="ngForm">
+
+          <!-- Provider -->
+          <div class="floating-group">
+            <select id="provider" name="provider" [(ngModel)]="redeemDto.provider" required>
+              <option value="" disabled selected hidden></option>
+
+              <option value="FNB_EWALLET">FNB eWallet</option>
+              <option value="CAPITEC_CASH_SEND">Capitec Cash Send</option>
+              <option value="NEDBANK_SENDIMALI">Nedbank SendiMali</option>
+              <option value="STANDARD_BANK_IM">Standard Bank Instant Money</option>
+            </select>
+
+            <label for="provider">Provider</label>
+          </div>
+
+
+          <!-- Reference Number -->
+          <div class="floating-group">
+            <input type="text" id="referenceNumber" name="referenceNumber" [(ngModel)]="redeemDto.referenceNumber"
+              required placeholder=" " />
+            <label for="referenceNumber">Reference Number</label>
+          </div>
+
+          <!-- PIN -->
+          <div class="floating-group">
+            <input type="password" id="pin" name="pin" [(ngModel)]="redeemDto.pin" required placeholder=" " />
+            <label for="pin">PIN</label>
+          </div>
+
+          <button type="submit" class="redeem-btn" [disabled]="redeemForm.invalid || loading">
+            {{ loading ? 'Redeeming…' : 'Redeem Funds' }}
+          </button>
+        </form>
+
+        <div *ngIf="message" class="redeem-message" [class.success]="success" [class.error]="!success">
+          {{ message }}
+        </div>
+      </div>
+
+    </section>
+
+  </main>
 </div>
 
 <app-footer></app-footer>
